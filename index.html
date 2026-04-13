@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cron Describe</title>
+    <meta name="description" content="Cron expression to natural language description in English and Japanese, with next fire times and shortcuts." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <header>
+      <div class="header-left">
+        <h1 id="title">Cron Describe</h1>
+        <p id="subtitle"></p>
+      </div>
+      <div class="header-controls">
+        <div class="btn-group" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="ja">JA</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <div class="btn-group" role="group" aria-label="Theme">
+          <button class="theme-btn" data-theme="dark">🌙</button>
+          <button class="theme-btn" data-theme="light">☀️</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- Input -->
+      <section class="input-section">
+        <label id="input-label" for="cron-input" class="field-label"></label>
+        <div class="input-row">
+          <input
+            id="cron-input"
+            type="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="none"
+            spellcheck="false"
+          />
+          <button id="clear-btn" type="button" class="icon-btn"></button>
+          <button id="copy-btn" type="button" class="icon-btn"></button>
+        </div>
+      </section>
+
+      <!-- Error panel -->
+      <section id="errors" class="error-panel" hidden>
+        <span id="err-title" class="error-title"></span>
+        <ul id="err-list"></ul>
+      </section>
+
+      <!-- Description cards -->
+      <section class="desc-section">
+        <div class="desc-card" id="card-en">
+          <div id="desc-en-label" class="field-label"></div>
+          <div id="desc-en" class="desc-text"></div>
+        </div>
+        <div class="desc-card" id="card-ja">
+          <div id="desc-ja-label" class="field-label"></div>
+          <div id="desc-ja" class="desc-text"></div>
+        </div>
+      </section>
+
+      <!-- Next fire times -->
+      <section id="fire-times-panel" hidden>
+        <div id="fire-times-label" class="field-label"></div>
+        <ul id="fire-times-list" class="fire-list"></ul>
+      </section>
+
+      <!-- Examples -->
+      <section class="examples-section">
+        <div id="examples-label" class="field-label"></div>
+        <div class="table-wrap">
+          <table id="examples-table">
+            <thead>
+              <tr>
+                <th id="col-expression"></th>
+                <th id="col-description"></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Siblings -->
+      <section class="siblings">
+        <a id="sibling-builder"
+           href="https://sen.ltd/portfolio/cron-builder/"
+           target="_blank" rel="noopener"></a>
+        <a id="sibling-tz"
+           href="https://sen.ltd/portfolio/cron-tz-viewer/"
+           target="_blank" rel="noopener"></a>
+      </section>
+
+    </main>
+
+    <footer>
+      <span id="footer-text"></span>
+    </footer>
+
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>

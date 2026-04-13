@@ -1,0 +1,339 @@
+/* ============================================================
+   Cron Describe — style.css
+   Dark/light theme via data-theme attribute on <html>.
+   ============================================================ */
+
+/* ---- Tokens ---- */
+:root {
+  --bg:       #0f1115;
+  --panel:    #171a21;
+  --panel-2:  #1e222b;
+  --fg:       #e6e8ec;
+  --muted:    #8a93a6;
+  --accent:   #7cc4ff;
+  --accent-2: #9ae6b4;
+  --border:   #272b35;
+  --error-bg: #2a1418;
+  --error-fg: #f87171;
+  --input-bg: #0d1017;
+  --code-bg:  #1a1e28;
+  --row-hover:#1c2030;
+}
+
+[data-theme="light"] {
+  --bg:       #f5f6f8;
+  --panel:    #ffffff;
+  --panel-2:  #eef0f4;
+  --fg:       #1a1d24;
+  --muted:    #6b7280;
+  --accent:   #1d6fa4;
+  --accent-2: #15803d;
+  --border:   #d1d5db;
+  --error-bg: #fff0f0;
+  --error-fg: #dc2626;
+  --input-bg: #ffffff;
+  --code-bg:  #eef0f4;
+  --row-hover:#f0f4fb;
+}
+
+/* ---- Reset / Base ---- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* ---- Header ---- */
+header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 28px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.header-left p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ---- Button groups ---- */
+.btn-group {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.btn-group button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-group button.active {
+  background: var(--panel-2);
+  color: var(--accent);
+}
+
+.btn-group button:hover:not(.active) {
+  background: var(--panel-2);
+  color: var(--fg);
+}
+
+/* ---- Main ---- */
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 24px 28px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ---- Field label ---- */
+.field-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* ---- Input section ---- */
+.input-section { display: flex; flex-direction: column; }
+
+.input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+#cron-input {
+  flex: 1;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--fg);
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 15px;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+#cron-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.icon-btn {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 14px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.icon-btn:hover {
+  background: var(--panel-2);
+  color: var(--fg);
+}
+
+/* ---- Error panel ---- */
+.error-panel {
+  background: var(--error-bg);
+  border: 1px solid var(--error-fg);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--error-fg);
+}
+
+.error-title {
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.error-panel ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+/* ---- Description cards ---- */
+.desc-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 620px) {
+  .desc-section { grid-template-columns: 1fr; }
+}
+
+.desc-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  min-height: 80px;
+}
+
+.desc-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--accent-2);
+  line-height: 1.5;
+}
+
+/* ---- Next fire times ---- */
+#fire-times-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.fire-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.fire-list li.muted { color: var(--muted); list-style: none; padding-left: 0; margin-left: -20px; }
+
+/* ---- Examples ---- */
+.examples-section {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+#examples-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#examples-table th {
+  text-align: left;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+}
+
+#examples-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+#examples-table td:first-child {
+  width: 220px;
+  white-space: nowrap;
+}
+
+#examples-table tr:last-child td { border-bottom: none; }
+
+.example-row {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.example-row:hover, .example-row:focus {
+  background: var(--row-hover);
+  outline: none;
+}
+
+.example-row:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+code {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  background: var(--code-bg);
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ---- Sibling links ---- */
+.siblings {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.siblings a {
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.siblings a:hover {
+  background: var(--panel-2);
+  color: var(--accent);
+}
+
+/* ---- Footer ---- */
+footer {
+  text-align: center;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 12px;
+  border-top: 1px solid var(--border);
+}
