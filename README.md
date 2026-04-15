@@ -65,3 +65,10 @@ Special characters:
 ## License
 
 MIT © 2026 SEN LLC (SEN 合同会社)
+
+<!-- sen-publish:links -->
+## Links
+
+- 🌐 Demo: https://sen.ltd/portfolio/cron-describe/
+- 📝 dev.to: https://dev.to/sendotltd/cron-expression-to-natural-language-in-english-and-japanese-kj0
+<!-- /sen-publish:links -->
